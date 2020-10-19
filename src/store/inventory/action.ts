@@ -4,7 +4,7 @@ import { ActionCreator, Action, Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
 
 import { ApplicationState } from "../index";
-import inventory from "../../mockdata";
+import inventory from "../../database/mockdata";
 
 export type AppThunk = ActionCreator<
   ThunkAction<void, ApplicationState, null, Action<string>>

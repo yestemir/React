@@ -1,0 +1,16 @@
+
+.container {
+    width: 100%;
+    max-width: 1170px;
+    margin: auto;
+    height: 125vh;
+    background-size: cover;
+    font-family: sans-serif;
+    margin-top: 80px;
+    padding: 30px;
+}
+
+.productListItems {
+    display: flex;
+    flex-wrap: wrap;
+}

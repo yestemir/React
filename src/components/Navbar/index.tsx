@@ -6,40 +6,7 @@ import { Link } from "react-router-dom";
 import { ApplicationState } from "../../store";
 import { Inventory } from "../../store/inventory/types";
 import { Cart } from "../../store/cart/types";
-
-const NavContainer = styled.div`
-  width: 100%;
-  height: 50px;
-  /* position: fixed; */
-  background: #e7e8eb;
-  margin: auto;
-`;
-
-const NavHeader = styled.div`
-  width: 20%;
-  float: left;
-  padding: 10px;
-`;
-
-const NavCart = styled.div`
-  width: 20%;
-  float: right;
-  padding: 10px;
-  cursor: pointer;
-`;
-
-const CartSpan = styled.span`
-  background-color: #6394f8;
-  border-radius: 10px;
-  color: white;
-  display: inline-block;
-  font-size: 12px;
-  line-height: 1;
-  padding: 3px 7px;
-  text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
-`;
+import './index.css'
 
 interface propsFromState {
   data: Cart;
@@ -52,22 +19,18 @@ type AllProps = propsFromState;
 const Navbar: React.FC<AllProps> = ({ data, loading, errors, children }) => {
   return (
     <div>
-      <NavContainer>
-        <NavHeader>
+      <div className='navContainer'>
+        <div className='navHeader'>
           <Link to="/">Products</Link>
-        </NavHeader>
-        <NavCart>
-          <Link to="/cart">
-            Cart <CartSpan>{data.items.length}</CartSpan>
-          </Link>
-          <Link to="/auth">
-            Login
-          </Link>
-          <Link to="/register">
-            Register
-          </Link>
-        </NavCart>
-      </NavContainer>
+        </div>
+        <div className='navCart'>
+          <ul>
+            <Link to="/cart">Cart <div className='cartSpan'>{data.items.length}</div></Link>
+            <Link to="/auth"><li>Login</li></Link>
+            <Link to="/register"><li>Register</li></Link>
+          </ul>
+        </div>
+      </div>
       {children}
     </div>
   );

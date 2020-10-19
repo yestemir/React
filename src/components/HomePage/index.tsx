@@ -2,23 +2,15 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
+
 import ProductItem from "../ProductItem";
 import { ApplicationState } from "../../store";
 import { Inventory } from "../../store/inventory/types";
 import { fetchRequest } from "../../store/inventory/action";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
+import './index.css'
 
-const Container = styled.div`
-  width: 100%;
-  max-width: 1170px;
-  margin: auto;
-`;
-
-const ProductListItems = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
 
 interface PropsFromState {
   loading: boolean;
@@ -43,14 +35,14 @@ const HomePage: React.FC<AllProps> = ({
   }, []);
 
   return (
-    <Container>
+    <div className='container'>
       {/* <Navbar /> */}
-      <ProductListItems>
+      <div className='productListItems'>
         {data.map(item => {
           return <ProductItem item={item} />;
         })}
-      </ProductListItems>
-    </Container>
+      </div>
+    </div>
   );
 };
 
