@@ -2,6 +2,7 @@ import React, {ReactElement} from 'react'
 import {Link} from "react-router-dom";
 import {User} from "../../models/User";
 import Field from "../../shared/Field";
+import './index.css'
 
 interface Props {
     registrate: (user: User) => void;

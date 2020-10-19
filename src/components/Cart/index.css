@@ -1,0 +1,35 @@
+
+
+.cartContainer {
+    /* height: 100%;
+    width: 100%; */
+    padding: 30px;
+}
+
+.cartHeader {
+}
+.cartHeaderDiv {
+    height: 100%;
+    width: 100%;
+}
+
+.cartListsDiv {
+    height: 100%;
+    width: 100%;
+}
+
+.cartListItemDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.cartListItemName {
+
+}
+
+.cartListItemPrice {
+
+}
