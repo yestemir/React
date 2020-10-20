@@ -6,6 +6,7 @@ import { addToCart } from "../../store/cart/action";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import './index.css'
+import {Link} from "react-router-dom";
 
 const ProductImage = styled.img`
   width: 100%;
@@ -13,6 +14,9 @@ const ProductImage = styled.img`
   object-fit: contain;
   object-position: center;
 `;
+
+export const LOCAL_STORAGE_RECENT_ITEMS_KEY = 'items.recently_viewed'
+
 
 interface propsFromComponent {
   item: Inventory;
@@ -29,12 +33,25 @@ const ProductItem: React.FC<Props> = ({ item, addToCart }) => {
     addToCart(item);
   };
 
+
+  const handleOpenItem = (currentItem: Inventory) => {
+      const recentlyViewedItemsKey = localStorage.getItem(LOCAL_STORAGE_RECENT_ITEMS_KEY)
+      if (recentlyViewedItemsKey) {
+          let recentlyViewedItems = JSON.parse(recentlyViewedItemsKey)
+          if (recentlyViewedItems.some((s: Inventory) => s.id === currentItem.id) === false)
+              localStorage.setItem(LOCAL_STORAGE_RECENT_ITEMS_KEY, JSON.stringify([...recentlyViewedItems, item]))
+      }
+      else
+          localStorage.setItem(LOCAL_STORAGE_RECENT_ITEMS_KEY, JSON.stringify([currentItem]))
+  }
+
+
   return (
     <div className='productContainer'>
       <div className='productFigure'>
         <ProductImage src={item.image} />
       </div>
-      <div className='productHeader'>{item.name}</div>
+        <Link to={'/items/' + item.id}><div onClick={() => handleOpenItem(item)} className='productHeader'>{item.name}</div></Link>
       <div className='productDescriptionDiv'>
         <div className='productBrandText'>{item.brand}</div>
         <div className='addToCart' onClick={() => AddItemToCart(item)}>Add To Cart</div>

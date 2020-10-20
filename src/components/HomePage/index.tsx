@@ -10,6 +10,7 @@ import { fetchRequest } from "../../store/inventory/action";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import './index.css'
+import RecentlyViewedProducts from "../RecentlyViewedProducts";
 
 
 interface PropsFromState {
@@ -39,9 +40,10 @@ const HomePage: React.FC<AllProps> = ({
       {/* <Navbar /> */}
       <div className='productListItems'>
         {data.map(item => {
-          return <ProductItem item={item} />;
+          return <ProductItem key={item.id} item={item} />;
         })}
       </div>
+      <RecentlyViewedProducts/>
     </div>
   );
 };

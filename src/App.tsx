@@ -16,6 +16,7 @@ import Auth from "./components/authorization/Auth";
 import Registration from "./components/authorization/Regestration";
 import { Redirect } from "react-router-dom";
 import Main from "./components/Main";
+import ProductDetail from "./components/ProductDetail/"
 
 interface MainProps {
   store: Store<ApplicationState>;
@@ -46,6 +47,7 @@ const App: React.FC<MainProps> = ({ store, history }) => {
                 <Route exact path='/auth'><Auth login={authenticateUser} cancel={show}/></Route>
                 <Route exact path='/register'><Registration registrate={createNewUser} cancel={show} validateUser={validate}/></Route>
                 <Route exact path='/main'><Main /></Route>
+                <Route exact path='/items/:id'><ProductDetail /></Route>
             </Switch>
         </ConnectedRouter>
       </ThemeProvider>

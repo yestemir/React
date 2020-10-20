@@ -14,7 +14,9 @@ export default function Auth({ login, cancel }: Props): ReactElement {
 
     return (
         <main className='backg'>
-        <div className='container modal-content animate'>
+        <div className='container'>
+            <h1>Login</h1>
+            <p>Please fill in this form to login.</p>
             <Field
                 type="email"
                 label="Email"
@@ -37,8 +39,8 @@ export default function Auth({ login, cancel }: Props): ReactElement {
             {/*    <button onClick={() => login(user)}>Submit</button>*/}
             {/*</div>*/}
 
-            <div className="container">
-                <Link to='/main'><button onClick={() => login(user)}>Submit</button></Link>
+            <Link to='/main'><button className="registerbtn" onClick={() => login(user)}>Submit</button></Link>
+            <div className="container signin">
                 <Link to='/'><button className="cancelbtn" onClick={cancel}>Back to the main page</button></Link>
             </div>
         </div>
