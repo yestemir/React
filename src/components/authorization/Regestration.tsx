@@ -20,7 +20,9 @@ export default function Registration({
 
     return (
         <main className='backg'>
-        <div className='container modal-content animate'>
+        <div className='container'>
+            <h1>Register</h1>
+            <p>Please fill in this form to create an account.</p>
             <Field
                 type="text"
                 label="Name"
@@ -46,8 +48,8 @@ export default function Registration({
                 required
             />
 
-            <div className="buttons">
-                <button onClick={() => registrate(user)} onSubmit={() => validateUser(user)}>Submit</button>
+            <button className="registerbtn" onClick={() => registrate(user)} onSubmit={() => validateUser(user)}>Submit</button>
+            <div className="container signin">
                 <Link to='/'><button className="cancelbtn" onClick={cancel}>Back to the main page</button></Link>
             </div>
         </div>
