@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import "./App.css";
-import { ThemeProvider } from "@chakra-ui/core";
-import customTheme from "./theme";
+import {darkTheme, lightTheme} from "./theme";
 import { Provider } from "react-redux";
 import { ApplicationState } from "./store";
 import { Store } from "redux";
@@ -12,11 +11,12 @@ import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
 import CartComponent from "./components/Cart";
 import {User} from "./models/User";
-import Auth from "./components/authorization/Auth";
-import Registration from "./components/authorization/Regestration";
+import Auth from "./components/Auth/Auth";
+import Registration from "./components/Auth/Registration";
 import { Redirect } from "react-router-dom";
 import Main from "./components/Main";
 import ProductDetail from "./components/ProductDetail/"
+import {ThemeContext, LanguageContext} from "./context";
 
 interface MainProps {
   store: Store<ApplicationState>;
@@ -36,23 +36,25 @@ const App: React.FC<MainProps> = ({ store, history }) => {
     const [errors, setErrors] = useState('');
     const [redirctTo, setRedirctTo] = useState(false);
 
-  return (
-    <Provider store={store}>
-      <ThemeProvider theme={customTheme}>
-        <ConnectedRouter history={history}>
-            <Navbar/>
-            <Switch>
-                <Route exact path='/'><HomePage /></Route>
-                <Route exact path='/cart'><CartComponent /></Route>
-                <Route exact path='/auth'><Auth login={authenticateUser} cancel={show}/></Route>
-                <Route exact path='/register'><Registration registrate={createNewUser} cancel={show} validateUser={validate}/></Route>
-                <Route exact path='/main'><Main /></Route>
-                <Route exact path='/items/:id'><ProductDetail /></Route>
-            </Switch>
-        </ConnectedRouter>
-      </ThemeProvider>
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <ThemeContext.Provider value={lightTheme}>
+                <LanguageContext.Provider value='EN'>
+                    <ConnectedRouter history={history}>
+                        <Navbar/>
+                        <Switch>
+                            <Route exact path='/'><HomePage /></Route>
+                            <Route exact path='/cart'><CartComponent /></Route>
+                            <Route exact path='/auth'><Auth login={authenticateUser} cancel={show}/></Route>
+                            <Route exact path='/register'><Registration registrate={createNewUser} cancel={show} validateUser={validate}/></Route>
+                            <Route exact path='/main'><Main /></Route>
+                            <Route exact path='/items/:id'><ProductDetail /></Route>
+                        </Switch>
+                    </ConnectedRouter>
+                </LanguageContext.Provider>
+            </ThemeContext.Provider>
+        </Provider>
+    );
 
     function createNewUser(user: User) {
         if (users && user) {
