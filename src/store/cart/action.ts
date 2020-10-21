@@ -48,3 +48,25 @@ export const addToCart: ActionCreator<ThunkAction<
     }
   };
 };
+
+export const removeFromCart: ActionCreator<ThunkAction<
+    void,
+    ApplicationState,
+    Inventory,
+    Action<string>
+    >> = itemIndex => {
+  return (dispatch: Dispatch): Action => {
+    try {
+      return dispatch({
+        type: CartActionTypes.REMOVE_FROM_CART,
+        payload: itemIndex
+      });
+    } catch (e) {
+      console.log(e)
+      return dispatch({
+        type: CartActionTypes.ADD_TO_CART_FAILURE,
+        payload: null
+      });
+    }
+  };
+};
