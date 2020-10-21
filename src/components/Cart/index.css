@@ -1,13 +1,7 @@
-
-
 .cartContainer {
-    /* height: 100%;
-    width: 100%; */
-    padding: 30px;
+
 }
 
-.cartHeader {
-}
 .cartHeaderDiv {
     height: 100%;
     width: 100%;
@@ -22,14 +16,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
 
-
-
-.cartListItemName {
-
+.cart-total {
+    align-items: center;
+    float: right;
 }
 
-.cartListItemPrice {
-
+.cart-total > button {
+    float: right;
 }

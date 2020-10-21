@@ -1,10 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
-
 import { ApplicationState } from "../../store";
-import { Inventory } from "../../store/inventory/types";
 import { Cart } from "../../store/cart/types";
 import './index.css'
 

@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
-
-
 import ProductItem from "../ProductItem";
 import { ApplicationState } from "../../store";
 import { Inventory } from "../../store/inventory/types";
@@ -33,7 +30,7 @@ const HomePage: React.FC<AllProps> = ({
 }) => {
   useEffect(() => {
     fetchRequest();
-  }, []);
+  }, [fetchRequest]);
 
   return (
     <div className='container'>

@@ -1,4 +1,4 @@
-import { CartActionTypes, Cart, cartState } from "./types";
+import { CartActionTypes} from "./types";
 import { Inventory } from "../inventory/types";
 
 import { ActionCreator, Action, Dispatch } from "redux";
