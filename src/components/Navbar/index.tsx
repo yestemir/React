@@ -1,12 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import { ApplicationState } from "../../store";
-import { Inventory } from "../../store/inventory/types";
 import { Cart } from "../../store/cart/types";
 import './index.css'
+import {LanguageContext, ThemeContext} from "../../context";
 
 interface propsFromState {
   data: Cart;
@@ -17,11 +16,13 @@ interface propsFromState {
 type AllProps = propsFromState;
 
 const Navbar: React.FC<AllProps> = ({ data, loading, errors, children }) => {
+  const Language = useContext(LanguageContext)
+  const Theme = useContext(ThemeContext)
   return (
     <div>
-      <div className='navContainer'>
+      <Theme>
         <div className='navHeader'>
-          <Link to="/">Products</Link>
+          <Link to="/">{Language === 'RU' ? 'Продукты' : 'Products'}</Link>
         </div>
         <div className='navCart'>
           <ul>
@@ -30,8 +31,8 @@ const Navbar: React.FC<AllProps> = ({ data, loading, errors, children }) => {
             <Link to="/register"><li>Register</li></Link>
           </ul>
         </div>
-      </div>
       {children}
+      </Theme>
     </div>
   );
 };

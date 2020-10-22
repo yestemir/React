@@ -51,8 +51,11 @@ const ProductItem: React.FC<Props> = ({ item, addToCart }) => {
       <div className='productFigure'>
         <ProductImage src={item.image} />
       </div>
-        <Link to={'/items/' + item.id}><div onClick={() => handleOpenItem(item)} className='productHeader'>{item.name}</div></Link>
-      <div className='productDescriptionDiv'>
+
+        <Link to={'/items/' + item.id}><h4 onClick={() => handleOpenItem(item)}>{item.name}</h4></Link>
+        <h3>Price: ${item.price}</h3>
+
+        <div className='productDescriptionDiv'>
         <div className='productBrandText'>{item.brand}</div>
         <div className='addToCart' onClick={() => AddItemToCart(item)}>Add To Cart</div>
       </div>
